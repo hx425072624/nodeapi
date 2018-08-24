@@ -3,9 +3,10 @@ var router = express.Router();
 var User = require('../models/user');
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  User.find({}, function(err, users) {
-    res.json(users);
-  });
+  // User.find({}, function(err, users) {
+  //   res.json(users);
+  // });
+  res.json({hello:"hello"});
 });
 router.get('/setup', function(req, res, next) {
 

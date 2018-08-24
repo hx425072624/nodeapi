@@ -6,9 +6,10 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var bodyParser = require('body-parser');
+var config = require('./config'); //读取配置文件config.js信息
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://huangxing:!!123abc@168.62.58.214:27017/admin' ,{ useNewUrlParser: true })
+mongoose.connect(config.database ,{ useNewUrlParser: true })
 
 
 var app = express();
