@@ -7,5 +7,5 @@ module.exports = mongoose.model('Image', new Schema({
   des: String,
   link: String,
   create_time:{type:Date,default:Date.now},
-  plus: Number
+  plus:{type:Number,default:0}
 }));
