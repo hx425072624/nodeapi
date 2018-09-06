@@ -1,9 +1,12 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-// 使用 module.exports 导出 User 模块
+// 使用 module.exports 导出 Image 模块
 module.exports = mongoose.model('User', new Schema({
+  id: String,
   name: String,
-  password: String,
-  admin: Boolean
+  loginname: String,
+  psw: String,
+  headImg: String,
+  des: String
 }));

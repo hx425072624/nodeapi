@@ -4,12 +4,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var imagesRouter = require('./routes/image');
 var bodyParser = require('body-parser');
-var config = require('./config'); //读取配置文件config.js信息
-
+require('dotenv').load();
 var mongoose = require('mongoose');
-mongoose.connect(config.database ,{ useNewUrlParser: true })
+mongoose.connect(process.env.MONGO_DB ,{ useNewUrlParser: true });
 
 
 var app = express();
@@ -24,7 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/images', imagesRouter);
 app.set('view engine', 'json');
 
 app.use(express.json());
