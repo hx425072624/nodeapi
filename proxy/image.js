@@ -23,13 +23,15 @@ exports.getImages = function (id, callback) {
 };
 
 exports.saveImage = function (image, callback) {
-  image.save(callback)
+  Image.create(image,callback)
 };
 
 exports.updateImage = function (id,image, callback) {
   Image.update({'_id':id},{$set:image},callback)
 };
-
+exports.deleteImage = function (id, callback) {
+  Image.remove({'_id':id},callback)
+};
 /**
  * 根据图片ID查找图片
  * Callback:

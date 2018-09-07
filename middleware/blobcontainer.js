@@ -23,3 +23,15 @@ exports.upload = ( originalName, stream, streamLength) => {
         });
     });
 };
+
+exports.delete = (blobName) => {
+  return new Promise((resolve, reject) => {
+    blobService.deleteBlobIfExists(containerName, blobName, err => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(blobName);
+      }
+    });
+  });
+};
