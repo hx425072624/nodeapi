@@ -1,5 +1,6 @@
-var Image  = require('../models/image');
-
+var Image  = require('../models/mongodb/Image');
+var mongoose = require('mongoose');
+mongoose.connect(process.env.MONGO_DB,{ useNewUrlParser: true });
 /**
  * 分页查找图片
  * Callback:

@@ -1,6 +1,6 @@
-var models  = require('../models');
-var User  = models.User;
-
+var User  = require('../models/mongodb/User');
+var mongoose = require('mongoose');
+mongoose.connect(process.env.MONGO_DB_OAUTH2,{ useNewUrlParser: true });
 /**
  * 根据登录名查找用户
  * Callback:

@@ -6,10 +6,6 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var imagesRouter = require('./routes/image');
 var bodyParser = require('body-parser');
-require('dotenv').load();
-var mongoose = require('mongoose');
-mongoose.connect(process.env.MONGO_DB ,{ useNewUrlParser: true });
-
 
 var app = express();
 
@@ -25,6 +21,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/images', imagesRouter);
 app.set('view engine', 'json');
+
+require('./middleware/oauth2')(app);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -47,7 +45,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.json({message:"发生错误，请稍后重试！"});
 });
 
 module.exports = app;
