@@ -1,7 +1,7 @@
 var oauthServer = require('oauth2-server');
 var Request = oauthServer.Request;
 var Response = oauthServer.Response;
-var oauth = require('./oauth')
+var oauth = require('./oauth');
 
 module.exports = function(options){
   var options = options || {};
@@ -17,7 +17,7 @@ module.exports = function(options){
     oauth.authenticate(request, response,options)
       .then(function (token) {
         // Request is authorized.
-        req.user = token
+        req.user = token;
         next()
       })
       .catch(function (err) {

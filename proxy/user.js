@@ -10,5 +10,5 @@ mongoose.connect(process.env.MONGO_DB_OAUTH2,{ useNewUrlParser: true });
  * @param {Function} callback 回调函数
  */
 exports.getUserByLoginName = function (loginName, callback) {
-  User.findOne({'loginname': new RegExp('^'+loginName+'$', "i")}, callback);
+  User.findOne({'username': new RegExp('^'+loginName+'$', "i")}, callback);
 };

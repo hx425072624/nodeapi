@@ -27,7 +27,7 @@ router.put('/:id',authenticate({scope:'profile'}), function(req, res, next) {
  })
 });
 
-router.post('/', authenticate({scope:'profile'}),uploadStrategy,(req, res, next)=> {
+router.post('/',uploadStrategy,(req, res, next)=> {
   const img = req.body
         ,originalName = req.file.originalname
         , stream = getStream(req.file.buffer)

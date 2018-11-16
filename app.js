@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var imagesRouter = require('./routes/image');
+var usersRouter = require('./routes/user');
 var bodyParser = require('body-parser');
 
 var app = express();
@@ -20,6 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/images', imagesRouter);
+app.use('/users',usersRouter);
 app.set('view engine', 'json');
 
 require('./middleware/oauth2')(app);
